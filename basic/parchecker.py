@@ -2,27 +2,23 @@ from stack import Stack
 import pytest
 
 
-def parChecker(symbolstring, symbols="()"):
-    if not all(True if s in symbols else False for s in symbolstring):
-        return False
-
+def parChecker(symbolString, openers="([{", closers=")]}"):
     s = Stack()
-    is_balanced = True
+    balanced = True
     idx = 0
-
-    while idx < len(symbolstring) and is_balanced:
-        symbol = symbolstring[idx]
-
-        if symbol == symbols[0]:
+    while idx < len(symbolString) and balanced:
+        symbol = symbolString[idx]
+        if symbol in openers:
             s.push(symbol)
         else:
             if s.isEmpty():
-                is_balanced = False
+                balanced = False
             else:
-                s.pop()
+                top = s.pop()
+                if not (openers.index(top) == closers.index(symbol)):
+                    balanced = False
         idx += 1
-
-        return True if is_balanced and s.isEmpty() else False
+    return True if (balanced and s.isEmpty()) else False
 
 
 def test_parChecker():
@@ -30,10 +26,14 @@ def test_parChecker():
     assert parChecker("()") == True
 
     assert parChecker("(") == False
-    assert parChecker("((()))") == False
 
-    assert parChecker("[]", "[]") == True
-    assert parChecker("[]]", "[]") == False
+    assert parChecker("[]", "[", "]") == True
+    assert parChecker("[]]", "[", "]") == False
 
-    assert parChecker("bbbb", "bb") == True
-    assert parChecker("a", "aa") == False
+    assert parChecker("bbpp", "b", "p") == True
+    assert parChecker("bbppp", "b", "p") == False
+    assert parChecker("aaabbb", "a", "b") == True
+
+    assert parChecker("[(())]") == True
+    assert parChecker("{({([][])}())}") == True
+    assert parChecker("[{()]") == False
