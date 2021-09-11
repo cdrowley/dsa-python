@@ -23,24 +23,37 @@ def test_isEmpty(setup_stacks):
     assert s_with_items.isEmpty() == False
 
 
-def test_push_peek(setup_stacks):
-    s, s_with_items = setup_stacks
-
-    s.push(4)
-    assert s.isEmpty() == False
-    assert s.peek() == 4
-
-    s_with_items.push("dog")
-    assert s_with_items.isEmpty() == False
-    assert s_with_items.peek() == "dog"
-
-
 def test_size_len(setup_stacks):
     s, s_with_items = setup_stacks
 
     assert s.size() == 0
     assert s_with_items.size() == 6
     assert len(s_with_items) == 6
+
+
+def test_push_peek_pop(setup_stacks):
+    s, s_with_items = setup_stacks
+
+    # Test Empty
+    s.push(4)
+    assert s.isEmpty() == False
+    assert s.peek() == 4
+    assert s.pop() == 4 and len(s) == 0
+
+    with pytest.raises(IndexError):
+        s.pop()
+
+    # Test Non-Empty
+    s_with_items.push("dog")
+    assert s_with_items.isEmpty() == False
+    assert s_with_items.peek() == "dog"
+
+    for _ in range(len(s_with_items)):
+        s_with_items.pop()
+    assert len(s_with_items) == 0
+
+    with pytest.raises(IndexError):
+        s_with_items.pop()
 
 
 def test_str(setup_stacks):
