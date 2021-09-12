@@ -11,21 +11,18 @@ def setup_stacks():
 
 def test_stack_init(setup_stacks):
     s, s_with_items = setup_stacks
-
     assert list(s) == []
     assert list(s_with_items) == [1, 2, 3, True, None, "ABC"]
 
 
 def test_isEmpty(setup_stacks):
     s, s_with_items = setup_stacks
-
     assert s.isEmpty() == True
     assert s_with_items.isEmpty() == False
 
 
 def test_size_len(setup_stacks):
     s, s_with_items = setup_stacks
-
     assert s.size() == 0
     assert s_with_items.size() == 6
     assert len(s_with_items) == 6
@@ -33,8 +30,6 @@ def test_size_len(setup_stacks):
 
 def test_push_peek_pop(setup_stacks):
     s, s_with_items = setup_stacks
-
-    # Test Empty
     s.push(4)
     assert s.isEmpty() == False
     assert s.peek() == 4
@@ -43,13 +38,13 @@ def test_push_peek_pop(setup_stacks):
     with pytest.raises(IndexError):
         s.pop()
 
-    # Test Non-Empty
     s_with_items.push("dog")
     assert s_with_items.isEmpty() == False
     assert s_with_items.peek() == "dog"
 
     for _ in range(len(s_with_items)):
         s_with_items.pop()
+
     assert len(s_with_items) == 0
 
     with pytest.raises(IndexError):
@@ -58,15 +53,12 @@ def test_push_peek_pop(setup_stacks):
 
 def test_str(setup_stacks):
     s, s_with_items = setup_stacks
-
     assert str(s) == "[]"
     assert str(s_with_items) == "[1, 2, 3, True, None, 'ABC']"
 
 
 def test_iter(setup_stacks):
     s, s_with_items = setup_stacks
-
     s.push(4)
-    assert all([i for i in s if i == 4])
-
-    assert all([True for i in s_with_items if i in (1, 2, 3, True, None, "ABC")])
+    assert all(True for i in s if i == 4)
+    assert all(True for i in s_with_items if i in (1, 2, 3, True, None, "ABC"))

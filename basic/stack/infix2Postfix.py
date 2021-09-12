@@ -4,20 +4,24 @@ import pytest
 
 
 def infix2Postfix(infix_expression: str) -> str:
-    """Converts an infix expression (A * B + C * D) to a Postfix expression (A B * C D * +).
+    """
+    Converts an infix expression (A*B+C*D) to a Postfix expression (AB*CD*+).
 
     Pseudocode:
     1. Create an empty stack of operators. Create an empty list for output.
-
     2. Convert the input infix string to a list of "tokens".
-
     3. Scan the list of tokens from left to right.
-        a) If the token is an operand, append it to the end of the output list.
-        b) If the token is a left parenthesis, push it on the operators stack.
-        c) If the token is a right parenthesis, pop the operators stack until the corresponding left parenthesis is removed. Append each operator to the end of the output list.
-        d) If the token is an operator, *, /, +, or -, push it on the opstack. However, first remove any operators already on the opstack that have higher or equal precedence and append them to the output list.
-
-    4. When the input expression has been completely processed, check the operators stack. Any operators still on the stack can be removed and appended to the end of the output list."""
+        a) If token is an operand, append it to the output list.
+        b) If token is a left parenthesis, push onto operators stack.
+        c) If token is a right parenthesis, pop operators stack until the
+        corresponding left parenthesis is removed. Append each operator to the
+        output list.
+        d) If token is an operator (*,/,+,-), push onto opstack. However, first
+        remove any operators already on the opstack that have higher or equal
+        precedence and append to the output list.
+    4. When the input expression has been completely processed, check the
+    operators stack. Any operators still on the stack can be removed and
+    appended to the end of the output list."""
 
     precedence = {"**": 4, "*": 3, "/": 3, "+": 2, "-": 2, "(": 1}
     opstack = Stack()
@@ -58,10 +62,16 @@ def postfixEval(postfix_expression: str) -> float:
     3. Scan the list of tokens from left to right.
         a) If the token is an operand, append it to the end of the output list.
         b) If the token is a left parenthesis, push it on the operators stack.
-        c) If the token is a right parenthesis, pop the operators stack until the corresponding left parenthesis is removed. Append each operator to the end of the output list.
-        d) If the token is an operator, *, /, +, or -, push it on the opstack. However, first remove any operators already on the opstack that have higher or equal precedence and append them to the output list.
+        c) If the token is a right parenthesis, pop the operators stack until
+        the corresponding left parenthesis is removed. Append each operator to
+        the end of the output list.
+        d) If the token is an operator, *, /, +, or -, push it on the opstack.
+        However, first remove any operators already on the opstack that have
+        higher or equal precedence and append them to the output list.
 
-    4. When the input expression has been completely processed, check the operators stack. Any operators still on the stack can be removed and appended to the end of the output list."""
+    4. When the input expression has been completely processed, check the
+    operators stack. Any operators still on the stack can be removed and
+    appended to the end of the output list."""
 
     def doMath(op, op1, op2):
         if op in ("*", "/", "+", "-", "**"):

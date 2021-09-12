@@ -3,7 +3,7 @@ import pytest
 
 
 def bin2dec(dec: int) -> str:
-    """Simplest Example: Binary to Decimal converter"""
+    """Simplest Example: Binary to Decimal converter."""
     if dec == 0:
         return "0"
 
@@ -25,7 +25,6 @@ def baseConverter(dec: int, base: int) -> str:
         return "0"
 
     DIGITS = "0123456789ABCDEF"
-
     remainders = Stack()
     while dec > 0:
         rem = dec % base

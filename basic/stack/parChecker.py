@@ -3,17 +3,15 @@ import pytest
 
 
 def parChecker(symbolString, openers="([{", closers=")]}") -> bool:
-    """Determins if a string containing various brackets is balanceddatetime A combination of a date and a time. Attributes: ()
+    """Determines if a string containing various brackets is balanced.
 
     Pseudocode:
     1. Create a stack.
-
     2. Scan the each symbol in the input string from left to right.
         a) if the symbol is an "open" bracket then push it onto the stack.
         b) otherwise pop the stack
+    3. After scanning, ensure it is empty then return True otherwise False."""
 
-    3. After scanning the list and ensuring it is empty return True otherwise False.
-    """
     s = Stack()
     balanced = True
 
