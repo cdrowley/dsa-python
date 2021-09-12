@@ -3,10 +3,6 @@ from typing import Union
 
 
 class Fraction:
-    """
-    Fractional implementation of rational numbers.
-    """
-
     def __init__(self, numerator: int, denominator: int) -> None:
         if not (isinstance(numerator, int) and isinstance(denominator, int)):
             raise TypeError(
@@ -65,7 +61,6 @@ class Fraction:
     def __float__(self) -> float:
         return self.top / self.bot
 
-    # TODO in python 3.10 can use - other: int | Fraction
     def __add__(self, other: Union[int, Fraction]) -> Fraction:
         if isinstance(other, int):
             other = Fraction(other, 1)
