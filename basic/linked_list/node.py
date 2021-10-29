@@ -7,6 +7,9 @@ class Node:
         self.data = initdata
         self.next = None
 
+    def __str__(self) -> str:
+        return f"{self.data}"
+
     def getData(self) -> Any:
         return self.data
 
