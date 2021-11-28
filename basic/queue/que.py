@@ -1,5 +1,4 @@
-from typing import Any
-from collections.abc import Iterator, Iterable
+from typing import Any, Iterator, Iterable
 
 
 class Queue:
@@ -36,3 +35,7 @@ class Queue:
 
     def dequeue(self) -> Any:
         return self.items.pop()
+
+
+if __name__ == '__main__':
+    pass

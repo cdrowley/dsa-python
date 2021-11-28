@@ -1,12 +1,13 @@
-#%%
 from __future__ import annotations
 from typing import Any
-from node import Node
+from basic.linked_list.node import Node
 
 
 class UnorderedList:
-    def __init__(self) -> None:
+    def __init__(self, *items: Any) -> None:
         self.head = None
+        for item in items:
+            self.add(item)
 
     def __str__(self) -> str:
         elements = []
@@ -14,8 +15,21 @@ class UnorderedList:
 
         while current is not None:
             elements.append(f"{current.data}-->")
-            current = current.next
+            current = current.getNext()
         return "".join(elements + ["None"])
+
+    def __len__(self) -> int:
+        return self.size()
+
+    def __iter__(self) -> Iterator[Any]:
+        items = []
+        current = self.head
+        count = 0
+        while current is not None:
+            count += 1
+            items.append(current.getData())
+            current = current.getNext()
+        return iter(items)
 
     def isEmpty(self) -> bool:
         return self.head is None
@@ -30,27 +44,30 @@ class UnorderedList:
         count = 0
         while current is not None:
             count += 1
-            current = current.next
+            current = current.getNext()
         return count
 
     def getIndexElement(self, idx: int) -> Node:
+        if idx < 0:
+            raise IndexError("Index must be greater than 0.")
+        
+        if idx + 1 > self.size():
+            raise IndexError("Index is out of range.")
+
         current = self.head
         count = 0
         while current is not None:
             if count == idx:
                 return current
             count += 1
-            current = current.next
-        else:
-            raise IndexError("The list is not that long.")
+            current = current.getNext()
 
     def search(self, item: Any) -> bool:
         current = self.head
         while current is not None:
-            print(f"{current}--->", end="")
-            if current.data == item:
+            if current.getData() == item:
                 return True
-            current = current.next
+            current = current.getNext()
         return False
 
     def remove(self, item: Any) -> None:
@@ -61,35 +78,18 @@ class UnorderedList:
         previous = None
 
         while current is not None:
-            print(f"{current}--->", end="")
-            if current.data == item:
+            if current.getData() == item:
                 if previous is None:
-                    self.head = current.next
+                    self.head = current.getNext()
                 else:
-                    previous.next = current.next
-                print(f"removed")
+                    previous.setNext(current.getNext()) 
                 return
             previous = current
-            current = current.next
-        return "test2" if not current and previous else "test3"
+            current = current.getNext()
+        
+        if current is None:
+            raise ValueError("Item not found.")
 
 
-# %%
-mylist = UnorderedList()
-mylist.add(31)
-mylist.add(77)
-mylist.add(17)
-mylist.add(93)
-mylist.add(26)
-
-# add tests
-# empty raises index error
-# 1 item only list
-# 5 item list, it takes first, last, every other
-# print(mylist.search(12414))
-# print(mylist.search(31))
-print(mylist)
-mylist.remove(26)
-print(mylist)
-# print(mylist.head.next.data)
-# %%
+if __name__ == '__main__':
+    pass

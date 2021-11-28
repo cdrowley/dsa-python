@@ -1,8 +1,7 @@
 # %%
 def psum(numbers):
-    ln = len(numbers)
     total = 0
-    for i in range(ln):
+    for i in range(len(numbers)):
         total += numbers[i]
     return total
 

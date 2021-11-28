@@ -21,3 +21,7 @@ class Node:
 
     def setNext(self, newnext: Node) -> None:
         self.next = newnext
+
+
+if __name__ == '__main__':
+    pass

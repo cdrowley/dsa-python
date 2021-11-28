@@ -45,3 +45,7 @@ def test_bin2dec(test, result):
 )
 def test_baseConverter(test, result):
     assert baseConverter(*test) == result
+
+
+if __name__ == '__main__':
+    pass

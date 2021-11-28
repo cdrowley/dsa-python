@@ -1,5 +1,4 @@
-from typing import Any
-from collections.abc import Iterator, Iterable
+from typing import Any, Iterator, Iterable
 
 
 class Deque:
@@ -42,3 +41,7 @@ class Deque:
 
     def removeRear(self) -> Any:
         return self.items.pop(0)
+
+
+if __name__ == '__main__':
+    pass

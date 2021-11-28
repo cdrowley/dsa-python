@@ -23,3 +23,7 @@ def hotPotato(names: list, num: int) -> str:
 )
 def test_hotPotato(test, result):
     assert hotPotato(*test) == result
+
+
+if __name__ == '__main__':
+    pass

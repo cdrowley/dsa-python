@@ -47,3 +47,7 @@ def test_parChecker():
     assert parChecker("[(())]") == True
     assert parChecker("{({([][])}())}") == True
     assert parChecker("[{()]") == False
+
+
+if __name__ == '__main__':
+    pass

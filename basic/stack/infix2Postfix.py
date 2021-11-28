@@ -114,3 +114,7 @@ def test_infix2Postfix(test, result):
 )
 def test_postfixEval(test, result):
     assert postfixEval(test) == result
+
+
+if __name__ == '__main__':
+    pass

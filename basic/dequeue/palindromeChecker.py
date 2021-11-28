@@ -1,11 +1,9 @@
-from tkinter import FALSE
 from deque import Deque
 import pytest
 
 
 def palChecker(string: str) -> bool:
     characters = Deque(*list(string))
-
     palindrome = True
     while len(characters) > 1 and palindrome:
         first = characters.removeFront()
@@ -29,3 +27,7 @@ def palChecker(string: str) -> bool:
 )
 def test_palChecker(test, result):
     assert palChecker(test) == result
+
+
+if __name__ == '__main__':
+    pass
