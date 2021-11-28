@@ -1,5 +1,5 @@
 import pytest
-from fraction import Fraction
+from classes.fraction import Fraction
 
 
 @pytest.fixture

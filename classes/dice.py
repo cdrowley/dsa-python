@@ -35,11 +35,5 @@ class MSDie:
         return self >= other
 
 
-# TODO add tests
-my_die = MSDie(6)
-for i in range(5):
-    print(my_die)
-    my_die.roll()
-
-d_list = [MSDie(6), MSDie(20)]
-print(d_list)
+if __name__ == '__main__':
+    pass

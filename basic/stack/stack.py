@@ -1,5 +1,4 @@
-from typing import Any
-from collections.abc import Iterator, Iterable
+from typing import Any, Iterator, Iterable
 
 
 class Stack:
@@ -43,3 +42,7 @@ class Stack:
         if len(self.items) == 0:
             raise IndexError("stack index out of range")
         return self.items[-1]
+
+    
+if __name__ == '__main__':
+    pass

@@ -113,3 +113,7 @@ class Fraction:
 
     def __ge__(self, other: Fraction) -> bool:
         return self >= other
+
+    
+if __name__ == '__main__':
+    pass
