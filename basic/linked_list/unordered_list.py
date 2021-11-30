@@ -1,7 +1,11 @@
+#%%
+
 from __future__ import annotations
 from typing import Any
-from basic.linked_list.node import Node
-
+try:
+    from basic.linked_list.node import Node
+except ModuleNotFoundError:
+    from node import Node
 
 class UnorderedList:
     def __init__(self, *items: Any) -> None:
@@ -36,7 +40,7 @@ class UnorderedList:
 
     def add(self, item: Any) -> None:
         temp = Node(item)
-        temp.next = self.head
+        temp.setNext(self.head)
         self.head = temp
 
     def size(self) -> int:
@@ -48,11 +52,13 @@ class UnorderedList:
         return count
 
     def getIndexElement(self, idx: int) -> Node:
-        if idx < 0:
-            raise IndexError("Index must be greater than 0.")
+        ulsize = self.size()
         
-        if idx + 1 > self.size():
-            raise IndexError("Index is out of range.")
+        if idx < 0: # allows for negative indexing
+            idx =  idx + ulsize
+
+        if ulsize == 0 or idx >= ulsize or idx < 0:
+            raise IndexError('Index out of range')
 
         current = self.head
         count = 0
@@ -91,5 +97,10 @@ class UnorderedList:
             raise ValueError("Item not found.")
 
 
-if __name__ == '__main__':
-    pass
+#x = UnorderedList()
+
+#print(x.size())
+
+#if __name__ == '__main__':
+#    pass
+# %%
