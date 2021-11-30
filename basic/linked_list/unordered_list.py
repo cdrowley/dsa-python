@@ -96,11 +96,5 @@ class UnorderedList:
         if current is None:
             raise ValueError("Item not found.")
 
-
-#x = UnorderedList()
-
-#print(x.size())
-
-#if __name__ == '__main__':
-#    pass
-# %%
+if __name__ == '__main__':
+    pass
