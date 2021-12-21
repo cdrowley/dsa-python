@@ -1,5 +1,3 @@
-#%%
-
 from __future__ import annotations
 from typing import Any
 
@@ -111,20 +109,4 @@ class UnorderedList:
 
 
 if __name__ == "__main__":
-    ul = UnorderedList()
-
-    ul_with_init_items = UnorderedList(31)
-
-    ul_with_added_items = UnorderedList()
-    for item in ["B", 3, None, ["x", "y", "z"]]:
-        ul_with_added_items.add(item)
-
-    for node in ul_with_added_items:
-        pass
-
-    ul.add(1)
-
-
-# %%
-
-# %%
+    pass
