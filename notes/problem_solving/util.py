@@ -1,8 +1,3 @@
-"""
-Utilities and helper functions for the course "Data Structures and Algorithms in Python". 
-Visit http://pythondsa.com to learn more.
-"""
-
 from timeit import default_timer as timer
 from textwrap import dedent
 import math
